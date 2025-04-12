@@ -16,7 +16,7 @@ namespace GeekShopping.IdentityServer.MainModule.Account
         public string Password { get; set; }
 
         public string ReturnUrl { get; set; }
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = "Client";
 
         public bool AllowRememberLogin { get; set; } = true;
         public bool EnableLocalLogin { get; set; } = true;
@@ -25,6 +25,6 @@ namespace GeekShopping.IdentityServer.MainModule.Account
         public IEnumerable<ExternalProvider> VisibleExternalProviders => ExternalProviders.Where(x => !String.IsNullOrWhiteSpace(x.DisplayName));
 
         public bool IsExternalLoginOnly => EnableLocalLogin == false && ExternalProviders?.Count() == 1;
-        public string ExternalLoginScheme => IsExternalLoginOnly ? ExternalProviders?.SingleOrDefault()?.AuthenticationScheme : null;
+        public string? ExternalLoginScheme => IsExternalLoginOnly ? ExternalProviders?.SingleOrDefault()?.AuthenticationScheme : null;
     }
 }
