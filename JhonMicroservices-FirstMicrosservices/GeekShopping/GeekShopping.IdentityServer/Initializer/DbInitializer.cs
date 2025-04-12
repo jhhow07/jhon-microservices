@@ -54,7 +54,9 @@ namespace GeekShopping.IdentityServer.Initializer
                 new Claim(JwtClaimTypes.FamilyName, admin.LastName),
                 new Claim(JwtClaimTypes.Role, IdentityConfiguration.Admin)
             }).Result;
-            
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
             ApplicationUser client = new ApplicationUser()
             {
                 UserName = "jhon-client",
@@ -70,7 +72,7 @@ namespace GeekShopping.IdentityServer.Initializer
             _user.AddToRoleAsync(client, IdentityConfiguration.Client)
                                                 .GetAwaiter().GetResult();
 
-            var clientClaims = _user.AddClaimsAsync(admin, new Claim[]
+            var clientClaims = _user.AddClaimsAsync(client, new Claim[]
             {
                 new Claim(JwtClaimTypes.Name, $"{client.FirstName} {client.LastName}"),
                 new Claim(JwtClaimTypes.GivenName, client.FirstName),

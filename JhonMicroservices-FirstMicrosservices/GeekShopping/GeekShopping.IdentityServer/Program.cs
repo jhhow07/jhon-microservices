@@ -1,7 +1,9 @@
+using Duende.IdentityServer.Services;
 using GeekShopping.IdentityServer.Configuration;
 using GeekShopping.IdentityServer.Initializer;
 using GeekShopping.IdentityServer.Model;
 using GeekShopping.IdentityServer.Model.Context;
+using GeekShopping.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,10 +30,12 @@ var identityBuilder = builder.Services.AddIdentityServer(options =>
     })  .AddInMemoryIdentityResources(IdentityConfiguration.IdentityResource)
         .AddInMemoryApiScopes(IdentityConfiguration.ApiScopes)
         .AddInMemoryClients(IdentityConfiguration.Clients)
-        .AddAspNetIdentity<ApplicationUser>();
+        .AddAspNetIdentity<ApplicationUser>()
+        .AddProfileService<ProfileService>();
 
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 identityBuilder.AddDeveloperSigningCredential();
 
 var app = builder.Build();
@@ -48,6 +52,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
 app.UseAuthorization();
+
 initializer.Initialize();
 
 app.MapControllerRoute(
