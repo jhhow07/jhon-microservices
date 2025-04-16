@@ -1,5 +1,6 @@
 using GeekShopping.CartAPI.Config;
 using GeekShopping.CartAPI.Model.Context;
+using GeekShopping.CartAPI.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -12,6 +13,9 @@ builder.Services.AddDbContext<MySQLContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 5)))
 );
 
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var mapper = MappingConfig.RegisterMaps().CreateMapper();
