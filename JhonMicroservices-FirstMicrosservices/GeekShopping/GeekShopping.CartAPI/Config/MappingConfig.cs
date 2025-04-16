@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using GeekShopping.ProductAPI.Data.ValueObjects;
-using GeekShopping.ProductAPI.Model;
+using GeekShopping.CartAPI.Data.ValueObjects;
+using GeekShopping.CartAPI.Model;
 
-namespace GeekShopping.ProductAPI.Config
+namespace GeekShopping.CartAPI.Config
 {
     public class MappingConfig
     {
@@ -11,7 +11,11 @@ namespace GeekShopping.ProductAPI.Config
             var mappingConfig = new MapperConfiguration(config =>
             {
                 config.CreateMap<ProductVO, Product>().ReverseMap();
+                config.CreateMap<CartHeaderVO, CartHeader>().ReverseMap();
+                config.CreateMap<CartDetailVO, CartDetail>().ReverseMap();
+                config.CreateMap<CartVO, Cart>().ReverseMap();
             });
+
             return mappingConfig;
         }
     }
