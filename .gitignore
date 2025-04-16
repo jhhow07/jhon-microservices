@@ -304,3 +304,4 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
+/JhonMicroservices-FirstMicrosservices/GeekShopping/GeekShopping.ProductAPI/appsettings.json
