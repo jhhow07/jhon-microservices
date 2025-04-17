@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using GeekShopping.CartAPI.Model.Base;
 
 namespace GeekShopping.CartAPI.Model
@@ -10,6 +11,6 @@ namespace GeekShopping.CartAPI.Model
         public string UserId { get; set; }
 
         [Column("coupon_code")]
-        public string CouponCode { get; set; }
+        public string? CouponCode { get; set; }
     }
 }

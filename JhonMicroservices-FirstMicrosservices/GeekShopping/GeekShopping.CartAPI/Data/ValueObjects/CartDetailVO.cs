@@ -1,14 +1,12 @@
-﻿using GeekShopping.CartAPI.Model;
-
-namespace GeekShopping.CartAPI.Data.ValueObjects
+﻿namespace GeekShopping.CartAPI.Data.ValueObjects
 {
     public class CartDetailVO
     {
         public long Id { get; set; }
         public long CartHeaderId { get; set; }
-        public CartHeader CartHeader { get; set; }
+        public CartHeaderVO? CartHeader { get; set; }
         public long ProductId { get; set; }
-        public Product Product { get; set; }
+        public ProductVO Product { get; set; }
         public int Count { get; set; }
     }
 }
